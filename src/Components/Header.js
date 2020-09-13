@@ -1,6 +1,61 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import Artists from './Artists';
+import Loader from '../Components/Loader';
 
 function Header() {
+    const url = `https://run.mocky.io/v3/3cab6663-7cd8-4365-b8a6-4a1d89305f6a`;
+    const [artists, setArtists] = useState({
+        loading: false,
+        data: null,
+        error: false
+    })
+
+    useEffect(() => {
+        setArtists({
+          loading: true,
+          data: null,
+          error: false  
+        })
+        axios.get(url)
+            .then(response => {
+                setArtists({
+                    loading: false,
+                    data: response.data,
+                    error: false
+                })
+            })
+            .catch(() => {
+                setArtists({
+                    loading: false,
+                    data: null,
+                    error: true
+                })
+            })
+    }, [url])
+
+    let content = null;
+
+    if(artists.error) {
+        content = <p>There was an error loading an artist.</p>
+    }
+
+
+    if(artists.loading) {
+        content = <Loader/>
+    }
+
+    if(artists.data) {
+        content = 
+        artists.data.all_artists.map((artist, key) => 
+            <Artists
+                key = {key}
+                artist={artist}
+            />
+        )
+    }
+
+
     return (
         <header className="header">
         <div className="page">
@@ -15,18 +70,13 @@ function Header() {
                     <li>
                         <button className="btn btn-menu more">More</button>
                     </li>						
-                </ul>						
+                </ul>		
+
                 <ul className="menu">
-                    <li>
-                        <a href="">Artist 1</a>
-                    </li>
-                    <li>
-                        <a href="">Artist 2</a>
-                    </li>
-                    <li>
-                        <a href="">Artist 3</a>
-                    </li>
+                    {content}
                 </ul>
+                
+
             </nav>
         </div>
     </header>
