@@ -294,6 +294,7 @@ function ArtistDetail() {
             </section>
         </main>      
     }
+    
 
     return (
         <div>
