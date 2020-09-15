@@ -145,87 +145,20 @@ function ArtistDetail() {
                                     </div>
                                 </div>
 
-                                <div className="footer-detail">										
+                                <div className="footer-detail">
+
                                     <ul className="social-list">
-                                        <li>
-                                            <a href= {artist.data.data.social_links[1].link} className="btn social-icon facebook">Facebook</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[2].link} className="btn social-icon twitter">Twitter</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[9].link} className="btn social-icon instagram">Instagram</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[11].link} className="btn social-icon spotify">Spotify</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[7].link} className="btn social-icon songkick">Songkick</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[3].link} className="btn social-icon soundcloud">soundcloud</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[4].link} className="btn social-icon youtube">youtube</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[5].link} className="btn social-icon beatport">beatport</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[6].link} className="btn social-icon mixcloud">mixcloud</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon gigatools">gigatools</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon eventbrite">eventbrite</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon skiddle">skiddle</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon ticketmaster">ticketmaster</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon tumblr">tumblr</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon google_plus">google_plus</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon google_play_music">google_play_music</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon bandsintown">bandsintown</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon itunes">itunes</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon shazam">shazam</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon deezer">deezer</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon medium">medium</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon telegram">telegram</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon home_page">home_page</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon tidal">tidal</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon napster">napster</a>
-                                        </li>
-                                        <li>
-                                            <a href={artist.data.data.social_links[1].link} className="btn social-icon amazon_music">amazon_music</a>
-                                        </li>
+                                        {artist.data.data.social_links.map(item => {
+                                            const {channel, link} = item;
+                                            return (
+                                                <li key={channel, link}>
+                                                    <a href= {link} className= {`btn social-icon ${channel}`}>{channel}</a>
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
+
+
 
                                     <div className="tooltip-wrapper">
                                             <button className="btn btn-add">Add links</button>
