@@ -77,12 +77,12 @@ function ArtistDetail() {
                                                     <p>Don’t agree with the subgenres? Add the ones you think are missing or vote for existing to get yours on top!</p>
                                                     <div className="stats-sheet">
                                                             {artist.data.data.subgenres.map(subgenre => {
-                                                            const {name} = subgenre;
+                                                            const {name, score} = subgenre;
                                                             return (
-                                                            <div className="row" key={name}>
+                                                            <div className="row" key={name, score}>
                                                                 <h5>{name}</h5>
                                                                 <div className="graph-line">
-                                                                    <span className="line" style= {{width: 47 + '%'}}>47%</span>
+                                                                <span className="line" style= {{width: score + '%'}}>{score}%</span>
                                                                 </div>
                                                             </div>
                                                             );
@@ -126,12 +126,12 @@ function ArtistDetail() {
                                                 <p>Don’t agree with the subgenres? Add the ones you think are missing or vote for existing to get yours on top!</p>
                                                 <div className="stats-sheet">
                                                     {artist.data.data.subgenres.map(subgenre => {
-                                                            const {name} = subgenre;
+                                                            const {name, score} = subgenre;
                                                             return (
-                                                            <div className="row" key={name}>
+                                                            <div className="row" key={name, score}>
                                                                 <h5>{name}</h5>
                                                                 <div className="graph-line">
-                                                                    <span className="line" style= {{width: 47 + '%'}}>47%</span>
+                                                                    <span className="line" style= {{width: score + '%'}}>{score}%</span>
                                                                 </div>
                                                             </div>
                                                             );
