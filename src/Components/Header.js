@@ -59,7 +59,7 @@ function Header() {
     return (
         <header className="header">
         <div className="page">
-            <a href="file:///C:/Users/ViberatePC23/PROJECTS/Viberate3.0/react-com/src/static/exercise-01.html#" className="logo">
+            <a href="/" className="logo">
                 <img src="./images/svg/logo-v.svg" alt="Viberate"/> Viberate
             </a>
             <nav className="navigation-primary">

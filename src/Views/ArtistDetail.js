@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import Loader from '../Components/Loader';
+import { ResponsiveBar } from "@nivo/bar";
 
 
 function ArtistDetail() {
@@ -158,8 +159,6 @@ function ArtistDetail() {
                                         })}
                                     </ul>
 
-
-
                                     <div className="tooltip-wrapper">
                                             <button className="btn btn-add">Add links</button>
                                             <div className="tooltip">
@@ -176,7 +175,33 @@ function ArtistDetail() {
 
                         <div className="col stats">
                             <div className="col-content">
+                                         
+                                <div className="stats-sheet">
+                                    <label>Most Popular in</label>
+                                    <br/>
+                                    {artist.data.data.popularity.map((popular) => (
+                                        <div>
+                                            <h5>{popular.city}</h5>
+                                            <div className="linear-graph">
+                                                <div
+                                                style={{
+                                                    background: "black",
+                                                    flex: popular.percentage
+                                                }}
+                                                />
+                                                <div
+                                                style={{
+                                                    background: "white",
+                                                    flex: 10 - popular.percentage
+                                                }}
+                                                />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
 
+                                {/*
+                                <br/>
                                 <div className="stats-sheet">
                                     <label>Most popular in</label>
                                     {artist.data.data.popularity.map(popular => {
@@ -191,6 +216,29 @@ function ArtistDetail() {
                                         );
                                     })}
                                 </div>
+                                */}
+
+                               {/* 
+                                <ResponsiveBar
+                                    width={600}
+                                    height={200}
+                                    margin={{ top: 60, right: 80, bottom: 60, left: 80 }}
+                                    data={artist.data.data.popularity}
+                                    indexBy="city"
+                                    keys={[ "city", "percentage"]}
+                                    layout="horizontal"
+                                    labelTextColor="inherit:darker(1.4)"
+                                    enableGridX={false}
+                                    maxValue={10}
+                                    axisTop={null}
+                                    axisRight={null}
+                                    axisBottom={null}
+                                    axisLeft={null}
+                                    enableGridX={false}
+                                    enableGridY={false}
+                                    isInteractive={false}
+                                />
+                                */}
 
                             </div>
                         </div>
